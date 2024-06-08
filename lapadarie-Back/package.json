@@ -1,0 +1,16 @@
+{
+  "name": "lapadarie-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elis e Mikelly",
+  "license": "ISC",
+  "description": "Nosso primeiro projeto full stack",
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "express": "^4.19.2"
+  }
+}
