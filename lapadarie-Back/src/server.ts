@@ -7,6 +7,8 @@ configDotenv();
 const app = express()
 const port = 3000
 
+const prisma = new PrismaClient();
+
 app.use(express.json());
 
 //criando o usuário para pôr na fila
