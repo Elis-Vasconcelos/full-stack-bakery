@@ -8,6 +8,7 @@
     background-color: #FFFFFF;
     padding: 15px;
     margin-top: -30px;
+    width: 16rem;
 }
 
 .totalVenda{
@@ -15,20 +16,20 @@
     padding: 15px;
     margin-top: -30px;
     color:#FFFFFF;
+    width: 16rem;
 }
 
 .topo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 130px; 
+     
 }
 
 .topo1{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 170px;
 }
 
 .imagem{
@@ -37,3 +38,35 @@
 }
 
 
+@media screen and (max-width: 768px) {
+
+    .contadores{
+        gap:20px;
+    }
+
+    .fila, .pao{
+        width: 10rem;
+    }
+
+    .totalVenda{
+        width: 10rem;
+    }
+
+}
+
+@media screen and (max-width: 468px) {
+    
+    .contadores{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .fila, .pao{
+        width: 18rem;
+    }
+
+    .totalVenda{
+        width: 18rem;
+    }
+}

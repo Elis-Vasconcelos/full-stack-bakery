@@ -20,11 +20,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 53rem;
+    width: 56rem;
     height: 3rem;
     background-color: #FFFFFF;
     padding: 15px;
-    margin-left: 680px;
+    margin-left: 700px;
     margin-top: 20px;
     color:#5F3305;
 }
@@ -40,4 +40,40 @@
     border: none;
     background: transparent;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    .fila{
+        margin-left: -400px;
+    }
+
+    .cards{
+        width: 35rem;
+        margin-left: 400px;  
+    }
+}
+
+@media screen and (max-width: 468px) {
+
+    .fila{
+        margin-left: 0px;
+    }
+
+    .botao{
+        margin-left: -100px;
+    }
+
+    .cards{
+        width: 18rem;
+        height: 5rem;
+        margin-left: 0px;  
+    }
+
+    .compra{
+        display: flex;
+        flex-direction: column;
+        gap:10px
+    }
+
 }
