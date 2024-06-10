@@ -1,0 +1,39 @@
+.contadores{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.fila, .pao{
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin-top: -30px;
+}
+
+.totalVenda{
+    background-color:#5F3305;
+    padding: 15px;
+    margin-top: -30px;
+    color:#FFFFFF;
+}
+
+.topo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 130px; 
+}
+
+.topo1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 170px;
+}
+
+.imagem{
+    width: 20px;
+    height: 20px;
+}
+
+
