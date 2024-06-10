@@ -1,0 +1,30 @@
+.fila{
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-left: -700px;
+}
+
+.botao{
+    border: none;
+    background: transparent;
+    color: #5F3305;
+    cursor: pointer;
+}
+
+.botao:hover{
+    color: #77644f;
+}
+
+.cards{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 53rem;
+    height: 3rem;
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin-left: 680px;
+    margin-top: 20px;
+   
+}
