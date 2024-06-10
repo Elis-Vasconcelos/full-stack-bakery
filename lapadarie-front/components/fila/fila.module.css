@@ -26,5 +26,18 @@
     padding: 15px;
     margin-left: 680px;
     margin-top: 20px;
-   
+    color:#5F3305;
+}
+
+.compra{
+    display: flex;
+    flex-direction: row;
+    gap:25px;
+    margin-top: 10px;
+}
+
+.lixo{
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }

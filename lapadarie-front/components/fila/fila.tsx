@@ -11,12 +11,15 @@ export default function Fila(){
 
             <div className={style.cards}>
                 <div className="info">
-                    <h6>Nome</h6>
-                    <h6>Total de pão:</h6>
-                    <h6>Total a pagar:</h6>
+                    <h4>Nome</h4>
+                    <div className={style.compra}>
+                        <h6>Total de pão:</h6>
+                        <h6>Total a pagar:</h6>
+                    </div>
+                    
                 </div>
 
-                <Image className='{style.imagem}' src={Lixeira} alt="lixeira" />
+                <button className={style.lixo}><Image className='lixo' src={Lixeira} alt="lixeira" /></button>
 
             </div>
 
