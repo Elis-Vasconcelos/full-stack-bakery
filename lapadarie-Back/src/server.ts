@@ -14,7 +14,7 @@ app.use(express.json());
 //criando o usuário para pôr na fila
 app.post('/user', async (req: Request, res: Response) => {
   const { nome, totalPao, totalPagar} = req.body;
-  const user = await prisma.user.create({
+  const user = await prisma.cliente.create({
     data: {
       nome,
       totalPao,
