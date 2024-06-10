@@ -1,5 +1,10 @@
+import style from './footer.module.css';
+
 export default function Rodape(){
     return(
-        <p>Com 💛 Info Jr UFBA 2022</p>
+        <div className={style.rodape}>
+            <p>Com 💛 Info Jr UFBA 2024</p>
+        </div>
+        
     )
 }
