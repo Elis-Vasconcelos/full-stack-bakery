@@ -18,8 +18,13 @@ const Modal: React.FC<ModalProps> = ({isOpen}) => {
         <div className={style.overlay}>
 
             <div className={style.modal}>
-                <p>MODAL ABERTO</p>
-            </div>
+                <h4>Adicionar pessoa a fila</h4>
+
+                <div className={style.botaoModal}>
+                    <button className={style.enviar}>Enviar</button>
+                    <button className={style.cancelar}>Cancelar</button>
+                </div>
+            </div>            
 
         </div>
             

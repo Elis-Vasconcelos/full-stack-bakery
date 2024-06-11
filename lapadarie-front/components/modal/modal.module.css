@@ -18,3 +18,35 @@
     width: 400px;
     height: 240px;
 }
+
+.modal h4{
+    color: #5F3305;
+}
+
+.botaoModal{
+    display: flex;
+    justify-content: center;
+    margin-top: 170px;
+    gap:30px;
+}
+
+.enviar{
+    width: 200px;
+    height: 50px;
+    background-color: #5F3305;
+    color: #FFFFFF; 
+    border: 2px solid #634527 ;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancelar{
+    width: 200px;
+    height: 50px;
+    background-color: #FFFFFF;
+    color: #DB1E1E;
+    border: 2px solid #DB1E1E;
+    border-radius: 6px;
+    cursor: pointer;
+    
+}
