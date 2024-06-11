@@ -9,13 +9,13 @@ import { useEffect, useState } from "react";
 
 export default function Fila(){ 
 
-    const [mostrarForms, setMostrarForms] = useState(false);
+    const [modal, setModal] = useState(false);
     const [nomeCliente, setnomeCliente] = useState<string>('');
 
     return(
         <div className={style.fila}>
 
-            <button className={style.botao}>
+            <button className={style.botao} onClick={() => console.log("clicou")}>
                 <h3>+ Adicionar pessoas a fila</h3>
             </button>
 
