@@ -15,8 +15,12 @@ const Modal: React.FC<ModalProps> = ({isOpen}) => {
 
      return(
 
-        <div className={style.modal}>
-            <p>MODAL ABERTO</p>
+        <div className={style.overlay}>
+
+            <div className={style.modal}>
+                <p>MODAL ABERTO</p>
+            </div>
+
         </div>
             
     )
