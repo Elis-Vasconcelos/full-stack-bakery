@@ -1,0 +1,12 @@
+
+{
+  "name": "lapadarie-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix lapadarie-back\" \"npm run dev --prefix lapadarie-front\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

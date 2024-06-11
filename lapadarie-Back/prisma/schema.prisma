@@ -14,8 +14,23 @@ datasource db {
 }
 
 model Cliente {
-  id        Int     @id @default(autoincrement())
-  nome     String
-  totalPao  Int
+  id         Int      @id @default(autoincrement())
+  nome       String
+  totalPao   Int
   totalPagar Float
+  isActive   Boolean  @default(true)
+}
+
+model Historico {
+  id         Int      @id @default(autoincrement())
+  nome       String
+  totalPao   Int
+  totalPagar Float
+}
+
+model Estatisticas {
+  id          Int      @id @default(autoincrement())
+  totalPao    Int      @default(0)
+  totalPagar  Float    @default(0)
+  tamanhoFila Int      @default(0)
 }
