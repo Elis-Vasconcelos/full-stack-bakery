@@ -4,21 +4,28 @@ import Image from "next/image";
 import Lixeira from "../../public/lixeira.svg";
 import style from "./fila.module.css";
 import { useEffect, useState } from "react";
+import Modal from '../modal/modal'
 
 
 
 export default function Fila(){ 
 
-    const [modal, setModal] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     const [nomeCliente, setnomeCliente] = useState<string>('');
 
     return(
         <div className={style.fila}>
 
-            <button className={style.botao} onClick={() => console.log("clicou")}>
+            <button className={style.botao} onClick={() => setModalOpen(true)}>
                 <h3>+ Adicionar pessoas a fila</h3>
             </button>
 
+            <div className="modal">
+
+                <Modal isOpen={modalOpen}/>
+
+            </div>
+            
             <div className={style.cards}>
                 <div className="info">
                     <h4>Nome</h4>
