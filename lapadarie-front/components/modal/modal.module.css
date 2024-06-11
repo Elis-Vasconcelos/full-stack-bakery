@@ -1,4 +1,9 @@
 .modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    margin-left: 400px;
     background-color: #FFFFFF;
     color: black;
 }

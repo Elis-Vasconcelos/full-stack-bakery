@@ -16,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({isOpen}) => {
      return(
 
         <div className={style.modal}>
-            <h3>MODAL</h3>
+            <p>MODAL ABERTO</p>
         </div>
             
     )
