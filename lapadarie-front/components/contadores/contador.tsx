@@ -57,12 +57,6 @@ export default function Contador(){
 
             </div>
 
-
-
-
-
-
-
         </div>
     )
 }
