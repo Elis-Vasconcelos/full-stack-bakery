@@ -3,9 +3,10 @@ import style from "./modal.module.css";
 
 interface ModalProps{
     isOpen: boolean;
+    onClose: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({isOpen}) => {
+const Modal: React.FC<ModalProps> = ({isOpen, onClose}) => {
 
     if(!isOpen){
 
@@ -22,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({isOpen}) => {
 
                 <div className={style.botaoModal}>
                     <button className={style.enviar}>Enviar</button>
-                    <button className={style.cancelar}>Cancelar</button>
+                    <button className={style.cancelar} onClick={onClose}>Cancelar</button>
                 </div>
             </div>            
 

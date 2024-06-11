@@ -22,7 +22,7 @@ export default function Fila(){
 
             <div className="modal">
 
-                <Modal isOpen={modalOpen}/>
+                <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
 
             </div>
             
