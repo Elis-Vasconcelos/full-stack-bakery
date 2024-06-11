@@ -99,6 +99,13 @@ app.get('/getEstatisticas', async (req: Request, res: Response) => {
   res.status(200).json(estatisticas);
 });
 
+// Get historico
+app.get('/getHistorico', async (req: Request, res: Response) => {
+  const historico = await prisma.historico.findMany();
+
+  res.status(200).json(historico);
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
