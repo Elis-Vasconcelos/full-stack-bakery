@@ -1,12 +1,12 @@
-import express, { Request, Response } from 'express'
+import express, { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { configDotenv } from 'dotenv';
 import cors from 'cors';
 
 configDotenv();
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 const prisma = new PrismaClient();
 
@@ -17,7 +17,29 @@ app.use(cors({
 
 app.use(express.json());
 
-//criando o usuário e pondo na fila
+// Inicializar Estatisticas se nao exitir
+async function inicializarEstatisticas() {
+  const estatisticas = await prisma.estatisticas.findFirst({
+    where: { id: 1 },
+  });
+
+  if (!estatisticas) {
+    await prisma.estatisticas.create({
+      data: {
+        totalPao: 0,
+        totalPagar: 0,
+        tamanhoFila: 0,
+      },
+    });
+  }
+}
+
+// Chamar inicializacao quando o server iniciar
+inicializarEstatisticas().catch((e) => {
+  console.error('Failed to initialize Estatisticas:', e);
+});
+
+// Criando usuário e adicionando a fila
 app.post('/user', async (req: Request, res: Response) => {
   const { nome, totalPao, totalPagar } = req.body;
 
@@ -41,7 +63,8 @@ app.post('/user', async (req: Request, res: Response) => {
   res.status(201).json({ message: 'Usuário adicionado a fila com sucesso!' });
 });
 
-app.post('/user/complete', async (req: Request, res: Response) => {
+// Removendo user da fila para o histórico
+app.post('/userSairFila', async (req: Request, res: Response) => {
   const { id } = req.body;
 
   const client = await prisma.cliente.update({
@@ -68,7 +91,7 @@ app.post('/user/complete', async (req: Request, res: Response) => {
 });
 
 // Get estatisticas
-app.get('/estatisticas', async (req: Request, res: Response) => {
+app.get('/getEstatisticas', async (req: Request, res: Response) => {
   const estatisticas = await prisma.estatisticas.findFirst({
     where: { id: 1 },
   });
@@ -76,7 +99,6 @@ app.get('/estatisticas', async (req: Request, res: Response) => {
   res.status(200).json(estatisticas);
 });
 
-
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`)
-})
+  console.log(`Servidor rodando na porta ${port}`);
+});
