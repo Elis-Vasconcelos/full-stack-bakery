@@ -36,7 +36,7 @@ async function inicializarEstatisticas() {
 
 // Chamar inicializacao quando o server iniciar
 inicializarEstatisticas().catch((e) => {
-  console.error('Failed to initialize Estatisticas:', e);
+  console.error('Falha ao inicializar Estatisticas:', e);
 });
 
 // Criando usuário e adicionando a fila
@@ -78,6 +78,10 @@ app.post('/userSairFila', async (req: Request, res: Response) => {
       totalPao: client.totalPao,
       totalPagar: client.totalPagar,
     },
+  });
+
+  await prisma.cliente.delete({
+    where: { id },
   });
 
   await prisma.estatisticas.update({
