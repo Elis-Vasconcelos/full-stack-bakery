@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Lixeira from "../../public/lixeira.svg";
 import style from "./fila.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 
 export default function Fila(){ 
