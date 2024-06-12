@@ -5,19 +5,17 @@ import Lixeira from "../../public/lixeira.svg";
 import style from "./fila.module.css";
 import { useEffect, useState } from "react";
 import Modal from '../modal/modal'
-
-
+import axios from "axios";
 
 export default function Fila(){ 
 
     const [modalOpen, setModalOpen] = useState(false);
-    const [nomeCliente, setnomeCliente] = useState<string>('');
 
     return(
         <div className={style.fila}>
 
             <button className={style.botao} onClick={() => setModalOpen(true)}>
-                <h3>+ Adicionar pessoas a fila</h3>
+                <h3> + Adicionar pessoas a fila</h3>
             </button>
 
             <div className="modal">

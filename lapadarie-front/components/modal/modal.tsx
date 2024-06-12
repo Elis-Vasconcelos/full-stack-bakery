@@ -23,13 +23,9 @@ const Modal: React.FC<ModalProps> = ({isOpen, onClose}) => {
                 <h4>Adicionar pessoa a fila</h4>
 
                 <div className="form">
-                    <Form/>
+                    <Form onClose={onClose}/>
                 </div>
 
-                <div className={style.botaoModal}>
-                    <button className={style.enviar}>Enviar</button>
-                    <button type="submit" className={style.cancelar} onClick={onClose}>Cancelar</button>
-                </div>
             </div>            
 
         </div>
