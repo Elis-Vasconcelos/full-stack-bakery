@@ -1,43 +1,39 @@
-"use client";
+import React, { useState } from 'react';
+import style from './fila.module.css';
 
-import Image from "next/image";
-import Lixeira from "../../public/lixeira.svg";
-import style from "./fila.module.css";
-import { useEffect, useState } from "react";
-import Modal from '../modal/modal'
-import axios from "axios";
+export default function Form() {
+    const [nomeCliente, setNomeCliente] = useState('');
+    const [totalPao, setTotalPao] = useState(0);
 
-export default function Fila(){ 
+    // Função para calcular o preço
+    const calcularPreco = () => {
+        const preco = totalPao * 2;
+        return preco;
+    };
 
-    const [modalOpen, setModalOpen] = useState(false);
-
-    return(
-        <div className={style.fila}>
-
-            <button className={style.botao} onClick={() => setModalOpen(true)}>
-                <h3> + Adicionar pessoas a fila</h3>
-            </button>
-
-            <div className="modal">
-
-                <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
-
-            </div>
-            
-            <div className={style.cards}>
-                <div className="info">
-                    <h4>Nome</h4>
-                    <div className={style.compra}>
-                        <h6>Total de pão:</h6>
-                        <h6>Total a pagar:</h6>
-                    </div>
-                    
-                </div>
-
-                <button className={style.lixo}><Image className='lixo' src={Lixeira} alt="lixeira" /></button>
-
+    return (
+        <form className={style.formulario}>
+            <div className="nome">
+                <input
+                    type="text"
+                    placeholder="Nome completo do cliente"
+                    value={nomeCliente}
+                    onChange={(e) => setNomeCliente(e.target.value)}
+                />
             </div>
 
-        </div>
-    )
+            <div className="pao">
+                <input
+                    type="number"
+                    placeholder="Total de pão"
+                    value={totalPao}
+                    onChange={(e) => setTotalPao(Number(e.target.value))}
+                />
+            </div>
+
+            <div>
+                Preço: R$ {calcularPreco()}
+            </div>
+        </form>
+    );
 }

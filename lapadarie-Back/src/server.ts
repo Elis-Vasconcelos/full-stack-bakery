@@ -67,16 +67,16 @@ app.post('/user', async (req: Request, res: Response) => {
 app.post('/userSairFila', async (req: Request, res: Response) => {
   const { id } = req.body;
 
-  const client = await prisma.cliente.update({
+  const cliente = await prisma.cliente.update({
     where: { id },
     data: { isActive: false },
   });
 
   await prisma.historico.create({
     data: {
-      nome: client.nome,
-      totalPao: client.totalPao,
-      totalPagar: client.totalPagar,
+      nome: cliente.nome,
+      totalPao: cliente.totalPao,
+      totalPagar: cliente.totalPagar,
     },
   });
 
@@ -109,6 +109,25 @@ app.get('/getHistorico', async (req: Request, res: Response) => {
 
   res.status(200).json(historico);
 });
+
+// deletar da fila
+app.delete('/deleteUserFila/:id', async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    await prisma.cliente.delete({
+      where: { id: Number(id) },
+    });
+
+    res.status(200).json({ message: 'Usuário removido da fila.' });
+  } catch (error) {
+    console.error('Erro ao remover usuário:', error);
+    res.status(500).json({ message: 'Erro interno do servidor.' });
+  }
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
