@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./modal.module.css";
+import Form from "../forms/forms";
 
 interface ModalProps{
     isOpen: boolean;
@@ -21,9 +22,13 @@ const Modal: React.FC<ModalProps> = ({isOpen, onClose}) => {
             <div className={style.modal}>
                 <h4>Adicionar pessoa a fila</h4>
 
+                <div className="form">
+                    <Form/>
+                </div>
+
                 <div className={style.botaoModal}>
                     <button className={style.enviar}>Enviar</button>
-                    <button className={style.cancelar} onClick={onClose}>Cancelar</button>
+                    <button type="submit" className={style.cancelar} onClick={onClose}>Cancelar</button>
                 </div>
             </div>            
 
