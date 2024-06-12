@@ -1,5 +1,5 @@
 import style from "./fila.module.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from '../modal/modal'
 import axios from "axios";
 interface Cliente {
@@ -15,6 +15,20 @@ export default function Fila(){
 
     const [clientes, setClientes] = useState<Cliente[]>([]);
 
+    const [idAtual, setIdAtual] = useState(0);
+
+    const sairDaFila = async (id: number) => {
+        try {
+            await axios.post('http://localhost:3000/userSairFila', { id });
+
+            // Atualiza a lista de clientes após a remoção
+            const clientesAtualizados = clientes.filter(cliente => cliente.id !== id);
+            setClientes(clientesAtualizados);
+        } catch(error) {
+            console.log('Erro ao retirar cliente:', error)
+        }
+    }
+
     const fetchClientes = async () => {
       try {
         const response = await axios.get('http://localhost:3000/clientes');
@@ -27,7 +41,7 @@ export default function Fila(){
     useEffect(() => {
         // Busca dados iniciais
         fetchClientes();
-
+        
         // Configura intervalo para buscar dados
         const interval = setInterval(fetchClientes, 1000); // Busca a cada 1 segundos
 
@@ -58,7 +72,7 @@ export default function Fila(){
                     </div>
                 </div>
 
-                <button className={style.lixo}>
+                <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
                     <img className='lixo' src={"/lixeira.svg"} alt="lixeira" />
                 </button>
 
