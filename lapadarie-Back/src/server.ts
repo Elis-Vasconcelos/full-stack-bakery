@@ -111,21 +111,22 @@ app.get('/getHistorico', async (req: Request, res: Response) => {
 });
 
 // deletar da fila
-app.delete('/deleteUserFila/:id', async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
+app.delete('/deleteUserFila', async (req: Request, res: Response) => {
+  const { id } = req.body;
 
-    await prisma.cliente.delete({
-      where: { id: Number(id) },
-    });
+  await prisma.cliente.delete({
+    where: { id: Number(id) },
+  });
 
-    res.status(200).json({ message: 'Usuário removido da fila.' });
-  } catch (error) {
-    console.error('Erro ao remover usuário:', error);
-    res.status(500).json({ message: 'Erro interno do servidor.' });
-  }
+  res.status(200).json({ message: 'Usuário removido da fila.' });
 });
 
+// Adicione um novo endpoint para obter clientes ativos
+app.get('/clientes', async (req: Request, res: Response) => {
+  const clientes = await prisma.cliente.findMany();
+
+  res.status(200).json(clientes);
+});
 
 
 
