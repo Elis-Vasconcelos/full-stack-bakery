@@ -2,20 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3rem;
-    margin-top: 25rem;
+    height: 5rem;
+    margin-top: 1rem;
     color: #5F3305;
-    
-}
-
-@media screen and (max-width: 768px) {
-    .rodape{
-        margin-top: 36rem;
-    }
-}
-
-@media screen and (max-width: 468px) {
-    .rodape{
-        margin-top: 20rem;
-    }
 }

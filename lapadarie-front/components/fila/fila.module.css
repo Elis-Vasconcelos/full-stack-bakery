@@ -1,7 +1,7 @@
 .fila{
     display: flex;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: 3rem;
     margin-left: -700px;
 }
 
@@ -27,6 +27,7 @@
     margin-left: 700px;
     margin-top: 20px;
     color:#5F3305;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .compra{

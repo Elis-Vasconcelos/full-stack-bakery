@@ -121,8 +121,8 @@ app.delete('/deleteUserFila', async (req: Request, res: Response) => {
   res.status(200).json({ message: 'Usuário removido da fila.' });
 });
 
-// Adicione um novo endpoint para obter clientes ativos
-app.get('/clientes', async (req: Request, res: Response) => {
+// get clientes que estão na fila
+app.get('/getFila', async (req: Request, res: Response) => {
   const clientes = await prisma.cliente.findMany();
 
   res.status(200).json(clientes);

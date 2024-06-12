@@ -31,10 +31,10 @@ export default function Fila(){
 
     const fetchClientes = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/clientes');
+        const response = await axios.get('http://localhost:3000/getFila');
         setClientes(response.data);
       } catch (error) {
-        console.error('Erro ao buscar clientes:', error);
+        console.error('Erro ao buscar clientes na fila:', error);
       }
     };
 
@@ -68,7 +68,7 @@ export default function Fila(){
                     <h4>{cliente.nome}</h4>
                     <div className={style.compra}>
                     <h6>Total de pão: {cliente.totalPao}</h6>
-                    <h6>Total a pagar: {cliente.totalPagar}</h6>
+                    <h6>Total a pagar: {cliente.totalPagar.toFixed(2)}</h6>
                     </div>
                 </div>
 
