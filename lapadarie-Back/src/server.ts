@@ -103,6 +103,13 @@ app.get('/getEstatisticas', async (req: Request, res: Response) => {
   res.status(200).json(estatisticas);
 });
 
+// Get clientes na fila
+app.get('/getFila', async (req: Request, res: Response) => {
+  const clientes = await prisma.cliente.findMany();
+
+  res.status(200).json(clientes);
+});
+
 // Get historico
 app.get('/getHistorico', async (req: Request, res: Response) => {
   const historico = await prisma.historico.findMany();
