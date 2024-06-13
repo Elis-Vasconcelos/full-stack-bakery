@@ -27,6 +27,7 @@ export default function Fila(){
             setClientes(clientesAtualizados);
         } catch(error) {
             console.log('Erro ao retirar cliente:', error)
+            //alert('Erro ao retirar cliente. Tente novamente.');
         }
     }
 
@@ -36,6 +37,7 @@ export default function Fila(){
         setClientes(response.data);
       } catch (error) {
         console.error('Erro ao buscar clientes na fila:', error);
+       // alert('Erro ao buscar cliente na fila. Tente novamente.');
       }
     };
 
@@ -50,35 +52,31 @@ export default function Fila(){
         return () => clearInterval(interval);
       }, []);
 
-    return(
+      return (
         <div className={style.fila}>
-
+    
             <button className={style.botao} onClick={() => setModalOpen(true)}>
                 <h3> + Adicionar pessoas a fila</h3>
             </button>
-
+    
             <div className="modal">
-
                 <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
-
             </div>
-            
-            {clientes.map(cliente => (
-                <div key={cliente.id} className={style.cards}>
+    
+            <div className={style.cards}>
                 <div className="info">
-                    <h4>{cliente.nome}</h4>
+                    <h4>Nome</h4>
                     <div className={style.compra}>
-                    <h6>Total de pão: {cliente.totalPao}</h6>
-                    <h6>Total a pagar: {cliente.totalPagar.toFixed(2)}</h6>
+                        <h6>Total de pão:</h6>
+                        <h6>Total a pagar:</h6>
                     </div>
+
                 </div>
 
-                <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
+                <button className={style.lixo}>
                     <Image className='lixo' src={Lixeira} alt="lixeira" />
                 </button>
-
+                
             </div>
-            ))}
         </div>
-    )
-}
+    )};
