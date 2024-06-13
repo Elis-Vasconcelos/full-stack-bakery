@@ -6,15 +6,20 @@
     margin-right: auto;
 }
 
-.historicoTitulo {
-    color: #4A2C2A;
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1.2rem; 
+.historicoBotao {
+    margin: 0 auto;
+    width: 10rem;
+    height: 2rem;
+    background-color: #E5CF94;
+    color: #634527; 
+    border: 2px solid #634527 ;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.historicoTitulo:hover {
-    color: #6D4C41; 
+.historicoBotao:hover {
+    background-color: #634527; 
+    color: #E5CF94;
 }
 
 .historicoCard {

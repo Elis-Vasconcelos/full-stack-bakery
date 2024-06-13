@@ -11,6 +11,7 @@ interface Historico {
 
 export default function Historico() {
   const [historico, setHistorico] = useState<Historico[]>([]);
+  const [isHistoricoVisible, setIsHistoricoVisible] = useState(true);
 
   const fetchHistorico = async () => {
     try {
@@ -18,7 +19,6 @@ export default function Historico() {
       setHistorico(response.data);
     } catch (error) {
       console.error('Erro ao buscar histórico:', error);
-      //alert('Erro ao buscar histórico. Tente novamente.');
     }
   };
 
@@ -28,10 +28,16 @@ export default function Historico() {
     return () => clearInterval(interval);
   }, []);
 
+  const toggleHistorico = () => {
+    setIsHistoricoVisible(!isHistoricoVisible);
+  };
+
   return (
     <div className={style.historicoContainer}>
-      <h3 className={style.historicoTitulo}>Histórico</h3>
-      {historico.map(item => (
+      <button className={style.historicoBotao} onClick={toggleHistorico}>
+        <h4>Histórico</h4>
+      </button>
+      {isHistoricoVisible && historico.map(item => (
         <div key={item.id} className={style.historicoCard}>
           <div className={style.historicoInfo}>
             <h4>{item.nome}</h4>
