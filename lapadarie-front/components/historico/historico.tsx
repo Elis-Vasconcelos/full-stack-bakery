@@ -18,7 +18,7 @@ export default function Historico() {
       setHistorico(response.data);
     } catch (error) {
       console.error('Erro ao buscar histórico:', error);
-      //alert('Erro ao buscar histórico. Tente novamente.');
+      alert('Erro ao buscar histórico. Tente novamente.');
     }
   };
 

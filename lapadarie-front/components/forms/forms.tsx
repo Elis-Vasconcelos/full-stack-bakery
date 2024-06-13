@@ -38,6 +38,7 @@ export default function Form({onClose}: FormProps) {
 
         } catch (error) {
             console.log('Erro ao criar usuário:', error)
+            alert('Erro ao criar cliente. Tente novamente.');
         }
     }
 

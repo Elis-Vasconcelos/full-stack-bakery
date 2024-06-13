@@ -27,7 +27,7 @@ export default function Fila(){
             setClientes(clientesAtualizados);
         } catch(error) {
             console.log('Erro ao retirar cliente:', error)
-            //alert('Erro ao retirar cliente. Tente novamente.');
+            alert('Erro ao retirar cliente. Tente novamente.');
         }
     }
 
@@ -37,7 +37,7 @@ export default function Fila(){
         setClientes(response.data);
       } catch (error) {
         console.error('Erro ao buscar clientes na fila:', error);
-       // alert('Erro ao buscar cliente na fila. Tente novamente.');
+       alert('Erro ao buscar cliente na fila. Tente novamente.');
       }
     };
 
