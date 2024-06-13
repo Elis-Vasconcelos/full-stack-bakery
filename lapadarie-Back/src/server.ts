@@ -126,9 +126,6 @@ app.delete('/deleteUserFila/:id', async (req: Request, res: Response) => {
   }
 });
 
-
-
-
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
