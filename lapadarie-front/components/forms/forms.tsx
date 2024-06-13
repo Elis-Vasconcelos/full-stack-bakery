@@ -6,12 +6,14 @@ interface FormProps {
     onClose: () => void;
 }
 
+let precoDoPao = 3.5;
+
 export default function Form({onClose}: FormProps) {
     const [nomeCliente, setNomeCliente] = useState('');
     const [totalPao, setTotalPao] = useState(0);
 
     const calcularTotalPagar = () => {
-        return totalPao * 2;
+        return totalPao * precoDoPao;
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

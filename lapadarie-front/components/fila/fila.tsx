@@ -1,39 +1,82 @@
-import React, { useState } from 'react';
-import style from './fila.module.css';
+import style from "./fila.module.css";
+import React, { useEffect, useState } from "react";
+import Modal from '../modal/modal'
+import axios from "axios";
+interface Cliente {
+    id: number;
+    nome: string;
+    totalPao: number;
+    totalPagar: number;
+  }
 
-export default function Form() {
-    const [nomeCliente, setNomeCliente] = useState('');
-    const [totalPao, setTotalPao] = useState(0);
+export default function Fila(){ 
 
-    // Função para calcular o preço
-    const calcularPreco = () => {
-        const preco = totalPao * 2;
-        return preco;
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const [clientes, setClientes] = useState<Cliente[]>([]);
+
+    const sairDaFila = async (id: number) => {
+        try {
+            await axios.post('http://localhost:3000/userSairFila', { id });
+
+            // Atualiza a lista de clientes após a remoção
+            const clientesAtualizados = clientes.filter(cliente => cliente.id !== id);
+            setClientes(clientesAtualizados);
+        } catch(error) {
+            console.log('Erro ao retirar cliente:', error)
+        }
+    }
+
+    const fetchClientes = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/getFila');
+        setClientes(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar clientes na fila:', error);
+      }
     };
 
-    return (
-        <form className={style.formulario}>
-            <div className="nome">
-                <input
-                    type="text"
-                    placeholder="Nome completo do cliente"
-                    value={nomeCliente}
-                    onChange={(e) => setNomeCliente(e.target.value)}
-                />
-            </div>
+    useEffect(() => {
+        // Busca dados iniciais
+        fetchClientes();
+        
+        // Configura intervalo para buscar dados
+        const interval = setInterval(fetchClientes, 1000); // Busca a cada 1 segundos
 
-            <div className="pao">
-                <input
-                    type="number"
-                    placeholder="Total de pão"
-                    value={totalPao}
-                    onChange={(e) => setTotalPao(Number(e.target.value))}
-                />
-            </div>
+        // Limpa o intervalo quando o componente é desmontado
+        return () => clearInterval(interval);
+      }, []);
 
-            <div>
-                Preço: R$ {calcularPreco()}
+    return(
+        <div className={style.fila}>
+
+            <button className={style.botao} onClick={() => setModalOpen(true)}>
+                <h3> + Adicionar pessoas a fila</h3>
+            </button>
+
+            <div className="modal">
+
+                <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
+
             </div>
-        </form>
-    );
+            
+            {clientes.map(cliente => (
+                <div key={cliente.id} className={style.cards}>
+                <div className="info">
+                    <h4>{cliente.nome}</h4>
+                    <div className={style.compra}>
+                    <h6>Total de pão: {cliente.totalPao}</h6>
+                    <h6>Total a pagar: {cliente.totalPagar.toFixed(2)}</h6>
+                    </div>
+                </div>
+
+                <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
+                    <img className='lixo' src={"/lixeira.svg"} alt="lixeira" />
+                </button>
+
+
+            </div>
+            ))}
+        </div>
+    )
 }

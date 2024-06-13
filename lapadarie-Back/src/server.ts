@@ -111,13 +111,12 @@ app.get('/getHistorico', async (req: Request, res: Response) => {
 });
 
 // deletar da fila
-app.delete('/deleteUserFila/:id', async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
+app.delete('/deleteUserFila', async (req: Request, res: Response) => {
+  const { id } = req.body;
 
-    await prisma.cliente.delete({
-      where: { id: Number(id) },
-    });
+  await prisma.cliente.delete({
+    where: { id: Number(id) },
+  });
 
     res.status(200).json({ message: 'Usuário removido da fila.' });
   } catch (error) {
@@ -125,6 +124,9 @@ app.delete('/deleteUserFila/:id', async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Erro interno do servidor.' });
   }
 });
+
+
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
