@@ -2,6 +2,9 @@ import style from "./fila.module.css";
 import React, { useEffect, useState } from "react";
 import Modal from '../modal/modal'
 import axios from "axios";
+import Image from "next/image";
+import Lixeira from "../../public/lixeira.svg"
+
 interface Cliente {
     id: number;
     nome: string;
@@ -71,9 +74,8 @@ export default function Fila(){
                 </div>
 
                 <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
-                    <img className='lixo' src={"/lixeira.svg"} alt="lixeira" />
+                    <Image className='lixo' src={Lixeira} alt="lixeira" />
                 </button>
-
 
             </div>
             ))}
