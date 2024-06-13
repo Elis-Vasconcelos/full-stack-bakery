@@ -5,7 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import Lixeira from "../../public/lixeira.svg"
 
-interface Cliente {
+export interface Cliente {
     id: number;
     nome: string;
     totalPao: number;
@@ -76,7 +76,7 @@ export default function Fila(){
                 <button className={style.lixo}>
                     <Image className='lixo' src={Lixeira} alt="lixeira" />
                 </button>
-                
+
             </div>
         </div>
     )};

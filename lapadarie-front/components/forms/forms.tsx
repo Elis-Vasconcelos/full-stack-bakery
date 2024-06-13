@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import style from './forms.module.css';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import {Cliente} from '../fila/fila';
 
 interface FormProps {
     onClose: () => void;
+    adicionarCliente: (cliente: Cliente) => void; // Função para adicionar cliente na fila
 }
 
 let precoDoPao = 3.5;
 
-export default function Form({onClose}: FormProps) {
+export default function Form({onClose, adicionarCliente}: FormProps) {
     const [nomeCliente, setNomeCliente] = useState('');
     const [totalPao, setTotalPao] = useState(0);
 
@@ -21,11 +23,14 @@ export default function Form({onClose}: FormProps) {
 
         try {
             // Faz a solicitação POST para o backend
-            await axios.post('http://localhost:3000/user', {
+            const response: AxiosResponse<Cliente> = await axios.post('http://localhost:3000/user', {
                 nome: nomeCliente,
                 totalPao: totalPao,
                 totalPagar: calcularTotalPagar(),
-            })
+            });
+
+            // Utiliza a função adicionarCliente para atualizar a lista na Fila
+            adicionarCliente(response.data);
 
             // Limpa os campos após o envio
             setNomeCliente('');
