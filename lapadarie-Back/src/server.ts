@@ -43,7 +43,7 @@ inicializarEstatisticas().catch((e) => {
 app.post('/user', async (req: Request, res: Response) => {
   const { nome, totalPao, totalPagar } = req.body;
 
-  const user = await prisma.cliente.create({
+  await prisma.cliente.create({
     data: {
       nome,
       totalPao,
@@ -133,6 +133,28 @@ app.delete('/deleteUserFila', async (req: Request, res: Response) => {
   }
 });
 
+app.put('/updateUser', async (req: Request, res: Response) => {
+  const { id, nome, totalPao, totalPagar } = req.body;
+
+  await prisma.cliente.update({
+    where: { id: id  },
+    data: {
+      nome,
+      totalPao,
+      totalPagar,
+    },
+  });
+
+  await prisma.estatisticas.update({
+    where: { id: 1 },
+    data: {
+      totalPao: { increment: totalPao },
+      totalPagar: { increment: totalPagar },
+    },
+  });
+
+  res.status(200).json({ message: 'Usuário atualizado com sucesso.' });
+});
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
