@@ -12,6 +12,7 @@ let precoDoPao = 3.5;
 export default function Form({onClose}: FormProps) {
     const [nomeCliente, setNomeCliente] = useState('');
     const [totalPao, setTotalPao] = useState(0);
+    const [inputValue, setInputValue] = useState(""); // Estado para controlar o valor do campo de entrada
 
     const calcularTotalPagar = () => {
         return totalPao * precoDoPao;
@@ -43,26 +44,31 @@ export default function Form({onClose}: FormProps) {
 return (
         <form className={style.formulario} onSubmit={handleSubmit}>
             <div className={style.nome}>
-                <input
-                    type="text"
-                    placeholder="Nome completo do cliente"
-                    value={nomeCliente}
-                    onChange={(e) => setNomeCliente(e.target.value)}
-                />
+            <input
+                type="text"
+                placeholder="Nome completo do cliente"
+                value={nomeCliente}
+                onChange={(e) => setNomeCliente(e.target.value)}
+                required // Torna o campo obrigatório
+            />
             </div>
 
             <div className={style.pao}>
             <input
-                type="number"
+                type="text"
                 placeholder="Total de pão"
-                value={totalPao === 0 ? "" : totalPao}
+                value={inputValue}
                 onChange={(e) => {
-                setTotalPao(e.target.value === "" ? 0 : Number(e.target.value));
+                    const val = e.target.value;
+                    setInputValue(val); // Atualiza o valor do campo de entrada
+                    setTotalPao(val === "" ? 0 : Number(val)); // Atualiza o estado totalPao com um número
                 }}
+                pattern="^[1-9][0-9]*$" // Padrão que não permite zero ou números negativos
+                required // Torna o campo obrigatório
                 onFocus={(e) => e.target.select()}
-                min="0"
             />
             </div>
+
 
 
             <div className={style.botaoModal}>
