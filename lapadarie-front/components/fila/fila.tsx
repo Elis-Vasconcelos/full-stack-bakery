@@ -15,8 +15,6 @@ export default function Fila(){
 
     const [clientes, setClientes] = useState<Cliente[]>([]);
 
-    const [idAtual, setIdAtual] = useState(0);
-
     const sairDaFila = async (id: number) => {
         try {
             await axios.post('http://localhost:3000/userSairFila', { id });
