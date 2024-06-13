@@ -63,20 +63,20 @@ export default function Fila(){
                 <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
             </div>
     
-            <div className={style.cards}>
-                <div className="info">
-                    <h4>Nome</h4>
-                    <div className={style.compra}>
-                        <h6>Total de pão:</h6>
-                        <h6>Total a pagar:</h6>
+            {clientes.map(cliente => (
+                <div key={cliente.id} className={style.cards}>
+                    <div className="info">
+                        <h4>{cliente.nome}</h4>
+                        <div className={style.compra}>
+                            <h6>Total de pão: {cliente.totalPao}</h6>
+                            <h6>Total a pagar: {cliente.totalPagar.toFixed(2)}</h6>
+                        </div>
                     </div>
 
+                    <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
+                        <Image className='lixo' src={Lixeira} alt="lixeira" />
+                    </button>
                 </div>
-
-                <button className={style.lixo}>
-                    <Image className='lixo' src={Lixeira} alt="lixeira" />
-                </button>
-
-            </div>
+            ))}
         </div>
     )};
