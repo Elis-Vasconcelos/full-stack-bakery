@@ -15,6 +15,7 @@
     border: 2px solid #634527 ;
     border-radius: 6px;
     cursor: pointer;
+    margin-bottom: .5rem;
 }
 
 .historicoBotao:hover {

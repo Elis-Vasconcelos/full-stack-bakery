@@ -29,6 +29,10 @@ export default function Historico() {
     return () => clearInterval(interval);
   }, []);
 
+  if (historico.length === 0) {
+    return null;
+  }
+
   const toggleHistorico = () => {
     setIsHistoricoVisible(!isHistoricoVisible);
   };

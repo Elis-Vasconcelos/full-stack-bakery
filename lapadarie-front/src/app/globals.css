@@ -8,9 +8,26 @@
 
 body, html {
   background-color: #E5CF94;
+  height: 100%;
+  margin: 0;
 }
 
 .logo {
   width: 100px;
   height: auto;
 }
+
+.elementos {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+footer {
+  height: 3rem;
+}
+
