@@ -22,7 +22,7 @@ export default function Form({onClose}: FormProps) {
 
         try {
             // Faz a solicitação POST para o backend
-            const response: AxiosResponse<Cliente> = await axios.post('http://localhost:3000/user', {
+            await axios.post('http://localhost:3000/user', {
                 nome: nomeCliente,
                 totalPao: totalPao,
                 totalPagar: calcularTotalPagar(),
@@ -39,6 +39,7 @@ export default function Form({onClose}: FormProps) {
             console.log('Erro ao criar usuário:', error)
         }
     }
+
 return (
         <form className={style.formulario} onSubmit={handleSubmit}>
             <div className={style.nome}>
@@ -51,13 +52,18 @@ return (
             </div>
 
             <div className={style.pao}>
-                <input
-                    type="number"
-                    placeholder="Total de pão"
-                    value={totalPao}
-                    onChange={(e) => setTotalPao(Number(e.target.value))}
-                />
+            <input
+                type="number"
+                placeholder="Total de pão"
+                value={totalPao === 0 ? "" : totalPao}
+                onChange={(e) => {
+                setTotalPao(e.target.value === "" ? 0 : Number(e.target.value));
+                }}
+                onFocus={(e) => e.target.select()}
+                min="0"
+            />
             </div>
+
 
             <div className={style.botaoModal}>
                 <button type="submit" className={style.enviar}>Enviar</button>
