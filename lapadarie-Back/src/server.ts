@@ -60,39 +60,50 @@ app.post('/user', async (req: Request, res: Response) => {
     },
   });
 
-  res.status(201).json({ message: 'Usuário adicionado a fila com sucesso!' });
+  res.status(200).json({ message: 'Usuário adicionado a fila com sucesso!' });
 });
 
 // Removendo user da fila para o histórico
-app.post('/userSairFila', async (req: Request, res: Response) => {
+app.post('/userSairFila', async (req, res) => {
   const { id } = req.body;
 
-  const cliente = await prisma.cliente.update({
-    where: { id },
-    data: { isActive: false },
-  });
-
-  await prisma.historico.create({
-    data: {
-      nome: cliente.nome,
-      totalPao: cliente.totalPao,
-      totalPagar: cliente.totalPagar,
-    },
-  });
-
-  await prisma.cliente.delete({
+  // Recupere os dados do cliente antes da exclusão
+  const cliente = await prisma.cliente.findUnique({
     where: { id },
   });
 
-  await prisma.estatisticas.update({
-    where: { id: 1 },
-    data: {
-      tamanhoFila: { decrement: 1 },
-    },
-  });
+  // Se o cliente existir, prossiga com as operações
+  if (cliente) {
+    // Crie um registro no histórico com os dados do cliente
+    await prisma.historico.create({
+      data: {
+        nome: cliente.nome,
+        totalPao: cliente.totalPao,
+        totalPagar: cliente.totalPagar,
+      },
+    });
 
-  res.status(200).json({ message: 'Usuário removido da fila e adicionado ao histórico.' });
+    // Delete o cliente da fila
+    await prisma.cliente.delete({
+      where: { id },
+    });
+
+    // Atualize as estatísticas decrementando o tamanho da fila
+    await prisma.estatisticas.update({
+      where: { id: 1 },
+      data: {
+        tamanhoFila: { decrement: 1 },
+      },
+    });
+
+    // Envie uma resposta de sucesso
+    res.status(200).json({ message: 'Usuário removido da fila e adicionado ao histórico.' });
+  } else {
+    // Envie uma resposta de erro se o cliente não existir
+    res.status(404).json({ message: 'Cliente não encontrado.' });
+  }
 });
+
 
 // Get estatisticas
 app.get('/getEstatisticas', async (req: Request, res: Response) => {
@@ -133,7 +144,7 @@ app.delete('/deleteUserFila', async (req: Request, res: Response) => {
   }
 });
 
-app.put('/updateUser', async (req, res) => {
+app.put('/updateUser', async (req: Request, res: Response) => {
   const { id, nome, totalPao, totalPagar } = req.body;
 
   // Obtenha os valores atuais de totalPao e totalPagar do usuário
@@ -167,8 +178,6 @@ app.put('/updateUser', async (req, res) => {
 
   res.status(200).json({ message: 'Usuário atualizado com sucesso.' });
 });
-
-
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

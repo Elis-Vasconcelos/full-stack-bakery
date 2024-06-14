@@ -18,7 +18,6 @@ model Cliente {
   nome       String
   totalPao   Int
   totalPagar Float
-  isActive   Boolean  @default(true)
 }
 
 model Historico {
