@@ -70,8 +70,6 @@ return (
             />
             </div>
 
-
-
             <div className={style.botaoModal}>
                 <button type="submit" className={style.enviar}>Enviar</button>
                 <button type="button" className={style.cancelar} onClick={onClose}>Cancelar</button>

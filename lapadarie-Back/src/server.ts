@@ -133,11 +133,18 @@ app.delete('/deleteUserFila', async (req: Request, res: Response) => {
   }
 });
 
-app.put('/updateUser', async (req: Request, res: Response) => {
+app.put('/updateUser', async (req, res) => {
   const { id, nome, totalPao, totalPagar } = req.body;
 
+  // Obtenha os valores atuais de totalPao e totalPagar do usuário
+  const currentData = await prisma.cliente.findUnique({
+    where: { id: id },
+    select: { totalPao: true, totalPagar: true }
+  });
+
+  // Atualize o cliente com os novos dados
   await prisma.cliente.update({
-    where: { id: id  },
+    where: { id: id },
     data: {
       nome,
       totalPao,
@@ -145,16 +152,23 @@ app.put('/updateUser', async (req: Request, res: Response) => {
     },
   });
 
+  // Calcule as diferenças entre os novos valores e os antigos
+  const differencePao = totalPao - (currentData ? currentData.totalPao : 0);
+  const differencePagar = totalPagar - (currentData ? currentData.totalPagar : 0);
+
+  // Atualize as estatísticas com base nas diferenças calculadas
   await prisma.estatisticas.update({
     where: { id: 1 },
     data: {
-      totalPao: { increment: totalPao },
-      totalPagar: { increment: totalPagar },
+      totalPao: differencePao > 0 ? { increment: differencePao } : differencePao < 0 ? { decrement: -differencePao } : undefined,
+      totalPagar: differencePagar > 0 ? { increment: differencePagar } : differencePagar < 0 ? { decrement: -differencePagar } : undefined,
     },
   });
 
   res.status(200).json({ message: 'Usuário atualizado com sucesso.' });
 });
+
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

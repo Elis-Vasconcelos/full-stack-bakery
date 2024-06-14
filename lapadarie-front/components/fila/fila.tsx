@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import Modal from '../modal/modal'
 import axios from "axios";
 import Image from "next/image";
-import Lixeira from "../../public/lixeira.svg"
+import Lixeira from "../../public/lixeira.svg";
+import EditForm from "../editForm/editForm";
+import Caneta from "../../public/caneta.svg";
 
 export interface Cliente {
     id: number;
@@ -12,11 +14,36 @@ export interface Cliente {
     totalPagar: number;
   }
 
-export default function Fila(){ 
-
-    const [modalOpen, setModalOpen] = useState(false);
-
+export default function Fila() {
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [clientes, setClientes] = useState<Cliente[]>([]);
+    const [clienteAtual, setClienteAtual] = useState<Cliente | null>(null);
+
+      const abrirModalAdicao = () => {
+        setIsAddModalOpen(true);
+      };
+    
+      const abrirModalEdicao = (cliente: Cliente) => {
+        setClienteAtual(cliente);
+        setIsEditModalOpen(true);
+      };
+    
+      const fecharModalEdicao = () => {
+        setIsEditModalOpen(false);
+      };
+    
+
+    const atualizarCliente = async (cliente: Cliente) => {
+        try {
+        await axios.put('http://localhost:3000/updateUser', cliente);
+        fetchClientes(); // Atualiza a lista de clientes
+        setIsEditModalOpen(false);
+        } catch (error) {
+        console.error('Erro ao atualizar cliente:', error);
+        alert('Erro ao atualizar cliente. Tente novamente.');
+        }
+    };
 
     const sairDaFila = async (id: number) => {
         try {
@@ -55,13 +82,14 @@ export default function Fila(){
       return (
         <div className={style.fila}>
     
-            <button className={style.botao} onClick={() => setModalOpen(true)}>
+            <button className={style.botao} onClick={() => abrirModalAdicao()}>
                 <h3> + Adicionar pessoas a fila</h3>
             </button>
     
-            <div className="modal">
-                <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}/>
-            </div>
+            {isAddModalOpen && (
+                <Modal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} />
+            )}
+
     
             {clientes.map(cliente => (
                 <div key={cliente.id} className={style.cards}>
@@ -72,11 +100,25 @@ export default function Fila(){
                             <h6>Total a pagar: {cliente.totalPagar.toFixed(2)}</h6>
                         </div>
                     </div>
-
-                    <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
-                        <Image className='lixo' src={Lixeira} alt="lixeira" />
-                    </button>
+                    <div className="actions"> {/* Contêiner dos botões */}
+                        <button className={style.caneta} onClick={() => abrirModalEdicao(cliente)}>
+                            <Image className='pen' src={Caneta} alt="caneta" />
+                        </button>
+                        <button className={style.lixo} onClick={() => sairDaFila(cliente.id)}>
+                            <Image className='lixo' src={Lixeira} alt="lixeira" />
+                        </button>
+                    </div>
                 </div>
             ))}
+
+            {isEditModalOpen && clienteAtual && (
+                    <EditForm
+                    cliente={clienteAtual}
+                    onClose={fecharModalEdicao}
+                    onSave={atualizarCliente}
+                    />
+                )}
+
+            
         </div>
     )};
