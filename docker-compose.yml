@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    build: ./lapadarie-back
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./lapadarie-back:/usr/src/app
+
+  frontend:
+    build: ./lapadarie-front
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./lapadarie-front:/usr/src/app
