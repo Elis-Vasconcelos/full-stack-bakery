@@ -77,4 +77,12 @@
       
     }
     
+    .modal h4 {
+      margin-bottom: 0px;
+    }
+
+    .formGroup {
+      margin-bottom: 25px;
+    }
+    
 }
