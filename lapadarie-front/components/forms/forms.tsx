@@ -7,7 +7,7 @@ interface FormProps {
     onClose: () => void;
 }
 
-let precoDoPao = .5;
+let precoDoPao = 3.5;
 
 export default function Form({onClose}: FormProps) {
     const [nomeCliente, setNomeCliente] = useState('');

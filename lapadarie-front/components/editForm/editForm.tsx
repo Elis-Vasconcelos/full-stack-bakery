@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import style from "./editForm.module.css"
+import React, { useState, useEffect } from "react";
+import style from "./editForm.module.css";
 import { Cliente } from "../fila/fila";
 
 interface EditFormProps {
@@ -12,6 +12,11 @@ const EditForm: React.FC<EditFormProps> = ({ cliente, onSave, onClose }) => {
   const [nome, setNome] = useState(cliente.nome);
   const [totalPao, setTotalPao] = useState(cliente.totalPao.toString());
   const [totalPagar, setTotalPagar] = useState(cliente.totalPagar.toString());
+  const precoPorPao = 3.5; 
+  useEffect(() => {
+    
+    setTotalPagar((parseInt(totalPao) * precoPorPao).toFixed(2));
+  }, [totalPao]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,8 +60,7 @@ const EditForm: React.FC<EditFormProps> = ({ cliente, onSave, onClose }) => {
               type="number"
               step="0.01"
               value={totalPagar}
-              onChange={(e) => setTotalPagar(e.target.value)}
-              required
+              readOnly
             />
           </div>
           <div className={style.formActions}>
