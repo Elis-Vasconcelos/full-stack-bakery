@@ -40,8 +40,7 @@ export default function Contador() {
                     <Image className={style.imagem} src={Pessoa} alt="Pessoas" />
                 </div>
                 
-                <h3>{estatisticas.tamanhoFila}</h3> {/* O número de pessoas na fila tem que ser um dado que vem do banco de dados*/}
-
+                <h3>{estatisticas.tamanhoFila}</h3> 
             </div>
 
             <div className={style.pao}>
@@ -50,7 +49,7 @@ export default function Contador() {
                     <Image className={style.imagem} src={Carrinho} alt="carrinhoDePao" />
                 </div>
                 
-                <h3>{estatisticas.totalPao}</h3> {/* A quantidade de pães vendidos tem que ser um dado que vem do banco de dados*/}
+                <h3>{estatisticas.totalPao}</h3>
 
             </div>
 
@@ -60,7 +59,7 @@ export default function Contador() {
                     <Image className={style.imagem} src={Dinheiro} alt="dinheiroTotal" />
                 </div>
                 
-                <h3>R$ {estatisticas.totalPagar.toFixed(2)}</h3> {/* O valor total de pão vendido tem que ser um dado que vem do banco de dados*/}
+                <h3>R$ {estatisticas.totalPagar.toFixed(2)}</h3> 
 
             </div>
         </div>
