@@ -68,3 +68,13 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 468px) {
+
+    .modal {
+      width: 200px; 
+      min-height: 340px; 
+      
+    }
+    
+}
