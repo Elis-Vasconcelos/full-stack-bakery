@@ -33,29 +33,28 @@
 }
 
 .botaoModal{
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: 20px;
-    gap:30px;
+    gap: 8px;
 }
 
 .enviar{
-    width: 200px;
-    height: 50px;
     background-color: #5F3305;
-    color: #FFFFFF; 
-    border: 2px solid #634527 ;
-    border-radius: 6px;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 .cancelar{
-    width: 200px;
-    height: 50px;
-    background-color: #FFFFFF;
-    color: #DB1E1E;
-    border: 2px solid #DB1E1E;
-    border-radius: 6px;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -65,11 +64,5 @@
     .pao input {
         width: 300px;
         height: 15px;
-    }
-
-    .enviar,
-    .cancelar {
-        width: 150px;
-        height: 50px;
     }
 }

@@ -30,19 +30,17 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Adicione estilos para a classe caneta */
 .caneta{
     border: none;
     background: transparent;
     cursor: pointer;
-    margin-right: 10px; /* Ajuste a margem conforme necessário */
+    margin-right: 10px;
 }
 
-/* Ajuste a classe cards para incluir o contêiner dos botões */
 .cards .actions {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre os botões */
+    gap: 10px;
 }
 
 .compra{

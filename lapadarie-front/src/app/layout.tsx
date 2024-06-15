@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "La Padarie",
   description: "Uma padaria sensacional",
   icons: {
-    icon: '/favicon.ico',
+    icon: '../public/favicon.ico',
   },
 };
 

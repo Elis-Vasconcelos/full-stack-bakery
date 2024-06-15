@@ -100,7 +100,7 @@ export default function Fila() {
                             <h6>Total a pagar: {cliente.totalPagar.toFixed(2)}</h6>
                         </div>
                     </div>
-                    <div className="actions"> {/* Contêiner dos botões */}
+                    <div className="actions">
                         <button className={style.caneta} onClick={() => abrirModalEdicao(cliente)}>
                             <Image className='pen' src={Caneta} alt="caneta" />
                         </button>
