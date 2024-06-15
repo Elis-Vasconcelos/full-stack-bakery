@@ -41,7 +41,6 @@ export default function Fila() {
         setIsEditModalOpen(false);
         } catch (error) {
         console.error('Erro ao atualizar cliente:', error);
-        alert('Erro ao atualizar cliente. Tente novamente.');
         }
     };
 
@@ -54,7 +53,6 @@ export default function Fila() {
             setClientes(clientesAtualizados);
         } catch(error) {
             console.log('Erro ao retirar cliente:', error)
-            alert('Erro ao retirar cliente. Tente novamente.');
         }
     }
 
@@ -64,7 +62,7 @@ export default function Fila() {
         setClientes(response.data);
       } catch (error) {
         console.error('Erro ao buscar clientes na fila:', error);
-       alert('Erro ao buscar cliente na fila. Tente novamente.');
+       console.log('Erro ao buscar cliente na fila. Tente novamente.');
       }
     };
 
