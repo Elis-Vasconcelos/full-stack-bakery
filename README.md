@@ -1,37 +1,49 @@
-# Atividade de Núcleo
+# Controle de Vendas e Fila de Padaria
 
-- **Orientadores:** Turma  [Fábio Santos Matos de Oliveira](https://gitlab.com/Fabio-Matos1303) | Turma  [Djair Maykon](https://gitlab.com/djairmaykon) | Turma  [Márcio R. Júnior](https://gitlab.com/marciojunior2109) 
-- **Coorientadores gerais:** [Raissa Luna](https://gitlab.com/raissalunana) | [Lucas Júlio](https://gitlab.com/LucasJulio)
+## Descrição
 
+Este é o projeto de **controle de vendas** e **fila de clientes** de uma padaria. O objetivo desta atividade é criar uma aplicação **full stack** para gerenciar as vendas de pães e a fila de clientes que aguardam atendimento. A aplicação deve ser capaz de adicionar e remover clientes da fila, controlar a quantidade de pães vendidos e manter um histórico dos pedidos.
 
-## Descrição da atividade
+A aplicação será desenvolvida com **NextJS** para o front-end e **ExpressJS** para o back-end, utilizando **Typescript** em ambas as partes. O banco de dados será gerido utilizando **Prisma ORM** e **SQLite** como banco de dados relacional.
 
-Nessa semana a atividade tem como objetivo a construção de uma aplicação para controle de vendas e fila de um padaria. Será o primeiro projeto full stack do núcleo
+## Tecnologias Utilizadas
 
+- **Front-end:**
+  - **Typescript**
+  - **React**
+  - **NextJS**
+- **Back-end:**
+  - **Typescript**
+  - **ExpressJS**
+  - **Prisma ORM**
+  - **Banco de Dados Relacional (SQLite)**
+- **Outras Tecnologias (Opcional):**
+  - **Docker** (para subir os serviços de back-end e front-end localmente)
 
-### Tarefa
+## Funcionalidades Implementadas
 
-Com base no design especificado crie essa aplicação utilizando NextJS.
+### Requisitos Obrigatórios
 
-- https://www.figma.com/design/j8n0tlrXRZEk9R7IYUThs1/La-Padarie?node-id=2027-5&t=BG2t6UHN6Xm853K4-0
+- **Adicionar Pessoa à Fila:** Ao adicionar uma pessoa à fila, incrementa-se o contador de "Pessoas na Fila", o contador de "Pães Vendidos" e a "Entrada".
+- **Remover Pessoa da Fila:** Ao remover uma pessoa da fila, decrementa-se apenas o contador de "Pessoas na Fila".
+- **Responsividade:** A aplicação será responsiva, garantindo uma boa experiência de uso em dispositivos móveis, tablets e desktops.
 
-Crie um banco de dados que permita a aplicação atender os requisitos obrigatorios. Criar uma api que consuma esse banco de dados e forneça as informações da fila e dos pães vendidos e então consuma essa API no seu projeto NextJS.
+### Requisitos Opcionais
 
-### Requisitos Obrigatórios:
+- **Docker:** Utilização de **Docker** para criar containers e subir tanto o back-end quanto o front-end localmente.
+- **Editar Pedidos na Fila:** A funcionalidade de editar pedidos na fila será implementada, incrementando os contadores de "Pães Vendidos" e "Entrada".
+- **Tela de Histórico de Pedidos:** Uma tela para exibir os pedidos que já saíram da fila será adicionada, com possibilidade de customização do design.
 
-- Atividade em dupla
-- Utilizar Typescript, React e NextJS para o front-end
-- Responsividade
-- Utilizar o Typescript, ExpressJS, Prisma ORM e algum banco relacional (indicamos sqlite) para o backend
-- Adicionar pessoa na fila (incrementa as "Pessoas na Fila", incrementa "Pães Vendidos" e "Entrada")
-- Remover pessoa da fila (decrementa apenas "Pessoas na Fila")
+## Design
 
-### Requisitos Opcionais:
+O design da aplicação foi especificado no **Figma** e pode ser acessado através do seguinte link:
 
-- Usar docker para subir o back e o front localmente
-- Editar pedidos na fila (incrementa "Pães Vendidos" e "Entrada") (Modificar o design a vontade)
-- Tela de historico de pedidos que já sairam da fila (Modificar o design a vontade)
+[Design no Figma](https://www.figma.com/design/j8n0tlrXRZEk9R7IYUThs1/La-Padarie?node-id=2027-5&t=BG2t6UHN6Xm853K4-0)
 
-## LINKS UTEIS
+## Estrutura do Projeto
 
-- Todos das atividades anteriores
+- **client/**: Contém o código do front-end, desenvolvido com **NextJS** e **React**.
+- **server/**: Contém o código do back-end, desenvolvido com **ExpressJS** e **Prisma ORM**.
+- **database/**: Contém a configuração do banco de dados SQLite e as migrações do Prisma.
+- **docker-compose.yml**: Arquivo para configurar e subir os containers Docker para os serviços de back-end e front-end.
+
