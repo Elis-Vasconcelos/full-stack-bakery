@@ -1,53 +1,42 @@
-# Controle de Vendas e Fila de Padaria
+### Sales Control and Bakery Queue
 
-## Descrição
+---
 
-Este é o projeto colaborativo de **controle de vendas** e **fila de clientes** de uma padaria. O objetivo desta atividade é criar uma aplicação **full stack** para gerenciar as vendas de pães e a fila de clientes que aguardam atendimento. A aplicação deve ser capaz de adicionar e remover clientes da fila, controlar a quantidade de pães vendidos e manter um histórico dos pedidos.
+### Description
 
-A aplicação será desenvolvida com **NextJS** para o front-end e **ExpressJS** para o back-end, utilizando **Typescript** em ambas as partes. O banco de dados será gerido utilizando **Prisma ORM** e **SQLite** como banco de dados relacional.
+This is a collaborative project for a bakery's **sales control** and **customer queue management**. The goal of this activity is to create a **full-stack application** to manage bread sales and the customer queue. The application must be able to add and remove customers from the queue, track the quantity of bread sold, and maintain a history of orders.
 
-## Tecnologias Utilizadas
+The application will be developed with **NextJS** for the front-end and **ExpressJS** for the back-end, using **Typescript** for both parts. The database will be managed using **Prisma ORM** with **SQLite** as a relational database.
 
-- **Front-end:**
-  - **Typescript**
-  - **React**
-  - **NextJS**
-- **Back-end:**
-  - **Typescript**
-  - **ExpressJS**
-  - **Prisma ORM**
-  - **Banco de Dados Relacional (SQLite)**
-- **Outras Tecnologias (Opcional):**
-  - **Docker** (para subir os serviços de back-end e front-end localmente)
+### Implemented Features
 
-## Funcionalidades Implementadas
+#### Mandatory Requirements
 
-### Requisitos Obrigatórios
+* **Add Person to Queue:** Adding a person to the queue increments the "People in Queue" counter, the "Bread Sold" counter, and the "Revenue."
+* **Remove Person from Queue:** Removing a person from the queue only decrements the "People in Queue" counter.
+* **Responsiveness:** The application will be responsive, ensuring a good user experience on mobile devices, tablets, and desktops.
 
-- **Adicionar Pessoa à Fila:** Ao adicionar uma pessoa à fila, incrementa-se o contador de "Pessoas na Fila", o contador de "Pães Vendidos" e a "Entrada".
-- **Remover Pessoa da Fila:** Ao remover uma pessoa da fila, decrementa-se apenas o contador de "Pessoas na Fila".
-- **Responsividade:** A aplicação será responsiva, garantindo uma boa experiência de uso em dispositivos móveis, tablets e desktops.
+#### Optional Requirements
 
-### Requisitos Opcionais
+* **Docker:** Using **Docker** to create containers and run both the back-end and front-end locally.
+* **Edit Orders in Queue:** The functionality to edit orders in the queue will be implemented, which will increment the "Bread Sold" and "Revenue" counters.
+* **Order History Screen:** A screen to display orders that have left the queue will be added, with the possibility of customizing its design.
 
-- **Docker:** Utilização de **Docker** para criar containers e subir tanto o back-end quanto o front-end localmente.
-- **Editar Pedidos na Fila:** A funcionalidade de editar pedidos na fila será implementada, incrementando os contadores de "Pães Vendidos" e "Entrada".
-- **Tela de Histórico de Pedidos:** Uma tela para exibir os pedidos que já saíram da fila será adicionada, com possibilidade de customização do design.
+### Design
 
-## Design
+The application's design was specified in **Figma** and can be accessed through the following link:
 
-O design da aplicação foi especificado no **Figma** e pode ser acessado através do seguinte link:
+[Figma Design](https://www.figma.com/design/j8n0tlrXRZEk9R7IYUThs1/La-Padarie?node-id=2027-5&t=BG2t6UHN6Xm853K4-0)
 
-[Design no Figma](https://www.figma.com/design/j8n0tlrXRZEk9R7IYUThs1/La-Padarie?node-id=2027-5&t=BG2t6UHN6Xm853K4-0)
+### Live Application
 
-## Aplicação em funcionamento
+The application can be viewed live at [**LinkedIn - View the live site**](https://www.linkedin.com/posts/mikelly-correia-75b85a203_ol%C3%A1-pessoal-gostaria-de-compartilhar-activity-7208165518682296321-oLf3?utm_source=share&utm_medium=member_desktop).
 
-A aplicação pode ser visualizada diretamente em [**LinkedIn - Visualizar o site em funcionamento**](https://www.linkedin.com/posts/mikelly-correia-75b85a203_ol%C3%A1-pessoal-gostaria-de-compartilhar-activity-7208165518682296321-oLf3?utm_source=share&utm_medium=member_desktop).
+### Project Structure
 
-## Estrutura do Projeto
+* **client/**: Contains the front-end code, developed with **NextJS** and **React**.
+* **server/**: Contains the back-end code, developed with **ExpressJS** and **Prisma ORM**.
+* **database/**: Contains the SQLite database configuration and Prisma migrations.
+* **docker-compose.yml**: A file to configure and run the Docker containers for the back-end and front-end services.
 
-- **client/**: Contém o código do front-end, desenvolvido com **NextJS** e **React**.
-- **server/**: Contém o código do back-end, desenvolvido com **ExpressJS** e **Prisma ORM**.
-- **database/**: Contém a configuração do banco de dados SQLite e as migrações do Prisma.
-- **docker-compose.yml**: Arquivo para configurar e subir os containers Docker para os serviços de back-end e front-end.
-
+<img width="1920" height="1437" alt="Home" src="https://github.com/user-attachments/assets/d344bfc8-7928-4d13-8de7-2fd0419a8531" />
