@@ -32,6 +32,8 @@ The application's design was specified in **Figma** and can be accessed through 
 
 The application can be viewed live at [**LinkedIn - View the live site**](https://www.linkedin.com/posts/mikelly-correia-75b85a203_ol%C3%A1-pessoal-gostaria-de-compartilhar-activity-7208165518682296321-oLf3?utm_source=share&utm_medium=member_desktop).
 
+<img width="1920" height="1437" alt="Home" src="https://github.com/user-attachments/assets/d344bfc8-7928-4d13-8de7-2fd0419a8531" />
+
 ### Project Structure
 
 * **client/**: Contains the front-end code, developed with **NextJS** and **React**.
@@ -39,4 +41,4 @@ The application can be viewed live at [**LinkedIn - View the live site**](https:
 * **database/**: Contains the SQLite database configuration and Prisma migrations.
 * **docker-compose.yml**: A file to configure and run the Docker containers for the back-end and front-end services.
 
-<img width="1920" height="1437" alt="Home" src="https://github.com/user-attachments/assets/d344bfc8-7928-4d13-8de7-2fd0419a8531" />
+
